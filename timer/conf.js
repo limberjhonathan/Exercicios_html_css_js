@@ -43,7 +43,7 @@ function startTimer() {
 
 function pauseTimer() {
     clearInterval(timer);
-    time.classList.add('pause'); // Adiciona a classe 'pause' ao pausar
+    time.classList.add('pause'); // Adiciona a classe 'pause' ao pausar.
 }
 
 function resetTimer() {
