@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.input-nova-tarefa {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: outline-color .7s ease-out;
+}
+
+.input-nova-tarefa:focus {
+    outline: 2px solid #05b448;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: background-color .7s ease-out;
+    background-color: rgba(46, 122, 49, 0.9);
+}
+
+.task-list {
+    text-align: start;
+    padding: 0;
+}
+
+.task-list li {
+    list-style: none;
+    padding: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.task-list li:nth-child(odd) {
+    background-color: #d8d5d5;
+}
+
+.task-list li .delete {
+    margin-left: 10px;
+    /* Ajuste o espaçamento entre o texto da tarefa e o botão */
+}
