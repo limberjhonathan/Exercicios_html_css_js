@@ -1,0 +1,81 @@
+/* Importação de fonte do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+/* Definição de variáveis de tema */
+:root {
+    --background-color: #3d4242;
+}
+
+/* Estilo do corpo da página */
+body {
+    font-family: 'Tektur', sans-serif;
+    background-color: var(--background-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo do contêiner da calculadora */
+.container {
+    width: 70%;
+    height: 60%;
+    background-color: transparent;
+    border-radius: 2em;
+    border: 2px solid white;
+}
+
+/* Estilo do cabeçalho da calculadora */
+.container h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Estilo da tabela da calculadora */
+.calculadora {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    /* border-collapse: collapse; */
+}
+
+
+/* Estilo do campo de exibição */
+.display {
+    font-size: 1.7em;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: .5em;
+    border: none;
+    background-color: rgba(192, 192, 192, 0.3);
+    transition: outline 0.5s ease-in, background-color 0.3s ease-in, padding 0.5s ease-in; /* Adicionando transição de cor e padding */
+    padding: .2em .2em .2em 0.5em; /* Adicionando padding à esquerda */
+    text-align: right;
+    margin-bottom: 12px;
+}
+/* Estilo do campo de exibição ao receber foco */
+.display:focus {
+    outline: 1px solid #2e2d2d;
+    background-color: rgb(231, 227, 227);
+    padding-right: .5em;
+}
+
+.btn{
+    font-size: 1em;
+    font-weight: 700;
+    width: 100%;
+    padding-block: .7em;
+    border: none;
+    background-color: transparent;
+    /* outline: 2px solid white; */
+    color: wheat;
+    transition: outline .7s ease, color .7s ease;
+}
+
+.btn:hover{
+    color: orange;
+    outline: 1px solid orange;
+    background-color: rgba(31, 30, 30, 0.7)
+}
+
