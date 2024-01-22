@@ -71,5 +71,5 @@ function criarCalculadora(){
 }
 
 const calculadora = criarCalculadora()
-//função iniciador
+//função iniciadora
 calculadora.inicia()
