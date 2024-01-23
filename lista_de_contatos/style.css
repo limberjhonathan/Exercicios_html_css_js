@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    margin: 0; /* Adicione esta linha para remover margens padrão no corpo da página */
+    padding: 0;
+    background-color: #3f3b3b;
+}
+
+.container {
+    width: 70%;
+    margin: 2em auto;
+}
+
+.contacts {
+    background-color: #fff;
+    padding: 2em 0;
+    text-align: center;
+}
+
+.addContact{
+    display: flex;
+    gap: .5em;
+    justify-content: center;
+}
+
+.addContact input{
+    font-size: 1.2em;
+    border: none;
+    background-color: rgba(63, 59, 59, .2);
+    border-radius: 10px;
+    padding: .5em .3em .5em .5em;
+    /* direction: rtl; */
+    text-align: end;
+    transition: box-shadow 0.3s ease-in, outline 0.3s ease-in,padding 0.2s ease-in;
+    
+}
+
+.addContact input:focus{
+    box-shadow: 0 0 5px 2px #3f3b3b;
+    outline: 2px solid #3f3b3b;
+    padding: .5em .4em .5em .4em;
+}
+
+.btn{
+    border: none;
+    border-radius: 11px;
+    padding: 1em;
+    transition: color .1s ease-in, background-color .1s ease-in;
+}
+
+.btn:hover{
+    background-color: #3f3b3b;
+    color: #fff;
+
+}
+
+.btn:active{
+    background-color: rgb(15, 177, 77);
+}
+
+.tabela{
+    text-align: center;
+    width: 90%;
+    margin: 2em calc(100vw - 97vw);
+    border-collapse: collapse; 
+}
+
+.tabela td{
+    padding: .5em 0;
+
+}   
+
+.tabela tr:nth-child(even):not(:first-child) {
+    background-color: #cecbcb;
+}
+
+
+.delete{
+    border: none;
+    border-radius: 5px;
+    padding: .5em;
+    transition: background-color .2s ease-in;
+}
+
+.delete:hover{
+    background-color: rgb(219, 46, 46);
+    color: white;
+}
+
+.delete:active{
+    outline: 1px solid #3f3b3b;
+}
