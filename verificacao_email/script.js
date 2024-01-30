@@ -1,10 +1,8 @@
 function Click() {
-    // Função para iniciar a aplicação
     this.inicio = () => {
         this.capturaEventos();
     }
 
-    // Função para capturar eventos de teclado e clique
     this.capturaEventos = () => {
         document.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
@@ -20,58 +18,49 @@ function Click() {
         });
     };
 
-    // Função para limpar a mensagem de erro
     this.limparMensagemErro = (span, elemento) => {
         span.style.opacity = '0';
         this.removerEstiloErro(elemento);
     }
 
-    // Função para adicionar estilo de erro a um elemento
     this.adicionarEstiloErro = (elemento) => {
         elemento.style.outline = "2px solid red";
     }
 
-    // Função para validar o formato de e-mail
-    this.validacaoEmail = (email) => {
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexEmail.test(email);
-    }
+    this.validacaoEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    // Função para verificar igualdade entre dois e-mails
-    this.verificarIgualdade = (email1, email2) => {
-        return email1 === email2;
-    }
+    this.verificarIgualdade = (email1, email2) => email1 === email2;
 
-    // Função para exibir alerta com mensagem
-    this.exibirAlerta = (mensagem) => {
-        alert(mensagem);
-    }
+    this.exibirAlerta = (mensagem) => alert(mensagem);
 
-    this.colocarVerificado = () => {
+    this.colocarVerificado = (elemento1, elemento2) => {
         const container = document.querySelector(".container");
         container.style.outline = "3px solid rgb(76, 230, 5)";
+        [elemento1, elemento2].forEach((el) => el.style.outline = "4px solid green");
     }
 
     this.removerVerificado = () => {
         const container = document.querySelector(".container");
+        ["#email1", "#email2"].forEach((selector) => {
+            const element = document.querySelector(selector);
+            element.style.outline = "";
+        });
         container.style.outline = "";
     }
 
-    // Função principal para verificar e-mails
     this.verificarEmail = () => {
         const email1 = document.querySelector("#email1");
         const email2 = document.querySelector("#email2");
         const text_spans = document.querySelectorAll(".span-text");
 
-        // Adiciona eventos de foco para limpar mensagens de erro
-        email1.addEventListener("focus", () => this.limparMensagemErro(text_spans[0], email1));
-        email2.addEventListener("focus", () => this.limparMensagemErro(text_spans[1], email2));
+        ["#email1", "#email2"].forEach((selector, index) => {
+            const email = document.querySelector(selector);
+            email.addEventListener("focus", () => this.limparMensagemErro(text_spans[index], email));
+        });
 
         if (!email1.value.trim() && !email2.value.trim()) {
-            // Se ambos os campos estão vazios, exibe mensagens de erro
             text_spans.forEach((span) => span.style.opacity = "1");
-            this.adicionarEstiloErro(email1);
-            this.adicionarEstiloErro(email2);
+            ["#email1", "#email2"].forEach((selector) => this.adicionarEstiloErro(document.querySelector(selector)));
         } else {
             text_spans.forEach((span) => span.style.opacity = "0");
 
@@ -79,38 +68,27 @@ function Click() {
             const validacaoEmail2 = this.validacaoEmail(email2.value);
 
             if (validacaoEmail1 && validacaoEmail2) {
-                // Se os e-mails são válidos
                 if (this.verificarIgualdade(email1.value, email2.value)) {
-                    this.colocarVerificado();
-                    // this.exibirAlerta("Os e-mails são iguais");
+                    this.colocarVerificado(email1, email2);
                 } else {
                     text_spans[1].textContent = "Os e-mails não coincidem";
                     text_spans[1].style.opacity = "1";
                 }
             }
 
-            if (!validacaoEmail1) {
-                // Se o primeiro e-mail não é válido, exibe mensagem de erro
-                this.adicionarEstiloErro(email1);
-                text_spans[0].style.opacity = '1';
-            }
-
-            if (!validacaoEmail2) {
-                // Se o segundo e-mail não é válido, exibe mensagem de erro
-                this.adicionarEstiloErro(email2);
-                text_spans[1].textContent = text_spans[0].textContent;
-                text_spans[1].style.opacity = '1';
-            }
+            [email1, email2].forEach((email, index) => {
+                if (!this.validacaoEmail(email.value)) {
+                    this.adicionarEstiloErro(email);
+                    text_spans[index].style.opacity = '1';
+                }
+            });
         }
     }
 
-    // Função para remover estilo de erro de um elemento
     this.removerEstiloErro = (elemento) => {
         elemento.style.outline = "";
     }
 }
 
-// Instância da classe Click
 const click = new Click();
-// Inicia a aplicação
 click.inicio();
