@@ -9,6 +9,8 @@ function Click() {
         document.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 this.verificarEmail();
+            } else {
+                this.removerVerificado();
             }
         });
 
@@ -45,6 +47,16 @@ function Click() {
         alert(mensagem);
     }
 
+    this.colocarVerificado = () => {
+        const container = document.querySelector(".container");
+        container.style.outline = "3px solid rgb(76, 230, 5)";
+    }
+
+    this.removerVerificado = () => {
+        const container = document.querySelector(".container");
+        container.style.outline = "";
+    }
+
     // Função principal para verificar e-mails
     this.verificarEmail = () => {
         const email1 = document.querySelector("#email1");
@@ -69,6 +81,7 @@ function Click() {
             if (validacaoEmail1 && validacaoEmail2) {
                 // Se os e-mails são válidos
                 if (this.verificarIgualdade(email1.value, email2.value)) {
+                    this.colocarVerificado();
                     // this.exibirAlerta("Os e-mails são iguais");
                 } else {
                     text_spans[1].textContent = "Os e-mails não coincidem";
