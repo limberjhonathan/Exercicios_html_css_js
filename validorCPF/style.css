@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    text-transform: uppercase;
+}
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+    height: 50%; /* Definindo a altura do .container como 50% */
+    border-radius: 1em;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.container-cpf {
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    margin: 1em;
+    height: 100%; /* Definindo a altura do .container-cpf como 100% */
+}
