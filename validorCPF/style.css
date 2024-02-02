@@ -9,30 +9,54 @@ html, body {
 body {
     font-family: 'Exo 2', sans-serif;
     text-transform: uppercase;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    min-height: 100vh; /* Definindo a altura mínima do corpo como 100% da altura da viewport */
 }
 
 .container {
-    margin: 0 auto;
+    margin-top: 5em;
     width: 70%;
-    height: 50%; /* Definindo a altura do .container como 50% */
+    height: 50%;
     border-radius: 1em;
-    border: 2px solid black;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    background-color: #2a69c7;
 }
 
 .container-cpf {
-    border: 3px solid black;
+    /* border: 3px solid black; */
     display: flex;
     flex-direction: column;
     gap: 1em;
     align-items: center;
     margin: 1em;
     height: 100%; /* Definindo a altura do .container-cpf como 100% */
+
 }
 
 .container input, .btn{
     font-size: 1.5em;
     padding: .3em .5em;
+    border: none;
+    border-radius: .8em;
+}
+
+.container input:focus{
+    outline: none;
+}
+
+
+.btn{
+    margin: 1em;
+    border-radius: .5em;
+}
+
+.btn:active{
+    outline: 2px solid black;
+}
+
+.title-cpf{
+    color: #fff;
 }
