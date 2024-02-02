@@ -74,6 +74,10 @@ function Cpf() {
     };
 
     this.atualizarCorDeFundo = (cpfDigitosFinais, cpfDigitosFinaisVerificados) => {
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
+        cpfInput.style.outline = "";
+        container.style.outline = "";
         boolVerificado = cpfDigitosFinais === cpfDigitosFinaisVerificados
         container.style.backgroundColor = boolVerificado ? "#20b841" : "#c72a2a";
         
@@ -94,6 +98,7 @@ function Cpf() {
         btn.style.color = ""
         cpfInput.style.outline = "";
         container.style.outline = "";
+        
     }
 
     this.calculoCpf = (cpfFornecido) => {
