@@ -2,6 +2,7 @@ function Cpf() {
     const cpfInput = document.querySelector(".inputCpf");
     const container = document.querySelector(".container");
     const textspan = document.querySelector(".textSpan")
+    const btn = document.querySelector('.btn');
     let boolVerificado = false;
 
     this.iniciar = () => {
@@ -48,20 +49,28 @@ function Cpf() {
     };
 
     this.verificadorCpf = () => {
-        const cpfNovePrimeiros = cpfInput.value.split('-')[0].replaceAll('.', '');
-        const arrayCpfReverser = cpfNovePrimeiros.split('').reverse();
 
-        // Primeiro dígito sendo verificado
-        const primeiroDigitoVerificado = this.calculoCpf(arrayCpfReverser);
-        arrayCpfReverser.unshift(String(primeiroDigitoVerificado));
+        tamanhoCpf = cpfInput.value.replaceAll('.','').replace('-','').length
 
-        // Segundo dígito sendo verificado
-        const segundoDigitoVerificado = this.calculoCpf(arrayCpfReverser);
+        if(tamanhoCpf == 11){
+            const cpfNovePrimeiros = cpfInput.value.split('-')[0].replaceAll('.', '');
+            const arrayCpfReverser = cpfNovePrimeiros.split('').reverse();
 
-        const cpfDigitosFinais = cpfInput.value.split('-')[1];
-        const cpfDigitosFinaisVerificados = String(primeiroDigitoVerificado) + String(segundoDigitoVerificado);
+            // Primeiro dígito sendo verificado
+            const primeiroDigitoVerificado = this.calculoCpf(arrayCpfReverser);
+            arrayCpfReverser.unshift(String(primeiroDigitoVerificado));
 
-        this.atualizarCorDeFundo(cpfDigitosFinais, cpfDigitosFinaisVerificados);
+            // Segundo dígito sendo verificado
+            const segundoDigitoVerificado = this.calculoCpf(arrayCpfReverser);
+
+            const cpfDigitosFinais = cpfInput.value.split('-')[1];
+            const cpfDigitosFinaisVerificados = String(primeiroDigitoVerificado) + String(segundoDigitoVerificado);
+
+            this.atualizarCorDeFundo(cpfDigitosFinais, cpfDigitosFinaisVerificados);
+        }else{
+            this.handleCpfMenorQueOnze()
+        }
+        
     };
 
     this.atualizarCorDeFundo = (cpfDigitosFinais, cpfDigitosFinaisVerificados) => {
@@ -81,6 +90,10 @@ function Cpf() {
         textspan.textContent = "------"
         textspan.style.color = ""
         container.style.backgroundColor = ""
+        btn.style.backgroundColor = ""
+        btn.style.color = ""
+        cpfInput.style.outline = "";
+        container.style.outline = "";
     }
 
     this.calculoCpf = (cpfFornecido) => {
@@ -90,6 +103,18 @@ function Cpf() {
 
         return digitoVerificado;
     };
+
+    this.handleCpfMenorQueOnze = () => {
+        
+        container.style.outline = "3px solid #c72a2a";
+        container.style.backgroundColor = "#fff";
+        textspan.textContent = "CPF não está adequadamente configurada no tamanho correto";
+        textspan.style.color = "#c72a2a";
+        cpfInput.style.outline = "3px solid #c72a2a";
+        btn.style.backgroundColor = "#c72a2a"
+        btn.style.color = "#fff"
+
+    }
 }
 
 const cpf = new Cpf();
