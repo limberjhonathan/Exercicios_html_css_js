@@ -9,14 +9,19 @@ html, body {
 body {
     font-family: 'Exo 2', sans-serif;
     text-transform: uppercase;
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
     min-height: 100vh; /* Definindo a altura mínima do corpo como 100% da altura da viewport */
 }
 
+.status{
+    margin-top: 2em;
+    text-align: center;
+    font-size: 1em;
+
+}
+
 .container {
-    margin-top: 5em;
+    /* margin-top: 5em; */
+    margin: 0 auto;
     width: 70%;
     height: 50%;
     border-radius: 1em;
