@@ -63,15 +63,25 @@ body {
     font-size: 1.3em;
     border-radius: .5em;
     border: none;
-    transition: background-color .5s ease-in, outline .1s ease;
+    transition: background-color .5s ease-in;
+}
+
+.btn_conf:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .btn_conf:hover {
     background-color: #ddd9d9;
 }
 
-.btn_conf:active{
-    outline: 2px solid black;
+.btn_conf.enabled:active {
+    outline: 1px solid black;
+}
+
+.container .btn_off:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .table {
