@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Protest+Riot&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 2px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: rgb(241, 81, 192);
+    background: linear-gradient(0deg, rgba(241, 81, 192, 1) 24%, rgba(132, 234, 255, 1) 100%);
+}
+
+.container {
+    background-color: #ffffff;
+    width: 80%;
+    margin: 4em auto;
+    padding: 1em;
+    border-radius: .6em;
+}
+
+.container-pro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.container-pro label {
+    text-align: center;
+    font-size: 1.4em;
+    width: 80%;
+    text-transform: uppercase;
+}
+
+.container-pro input {
+    padding: .5em .3em;
+    font-size: 1.3em;
+    width: 60%;
+    border: none;
+    background-color: #ddd8d8;
+    border-radius: 1em;
+    padding-left: .4em;
+    transition: padding-left .2s ease-in;
+    box-sizing: border-box;
+    margin-bottom: .8em;
+}
+
+.container-pro input:nth-of-type(2){
+    text-align: center;
+    width: 20%;
+}
+.container-pro input:nth-of-type(3){
+    width: 20%;
+}
+
+.container-pro input:focus {
+    padding-left: .7em;
+    box-sizing: border-box;
+}
+
+.btn_conf {
+    padding: .5em 1em;
+    font-size: 1.3em;
+    border-radius: .5em;
+    border: none;
+    transition: background-color .5s ease-in, outline .1s ease;
+}
+
+.btn_conf:hover {
+    background-color: #ddd9d9;
+}
+
+.btn_conf:active{
+    outline: 2px solid black;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.table caption{
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.table table{
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 2px solid black;
+    padding: 0.5em 1em; /* Adicione preenchimento para melhorar a legibilidade */
+}
