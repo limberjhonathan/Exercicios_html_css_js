@@ -43,6 +43,10 @@ function Compras() {
         newTr.append(newTd_produto, newTd_quantidade, newTd_preco, newTd_total, newTd_data);
         table.appendChild(newTr);
         console.log("Dados enviados com sucesso.");
+
+        produto.value = ''
+        preco_uni.value = ''
+        quantidade.value = ''
     };
 
     this.dataAtual = () => {
