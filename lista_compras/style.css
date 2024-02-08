@@ -103,4 +103,5 @@ body {
 .table td {
     border: 2px solid black;
     padding: 0.5em 1em; /* Adicione preenchimento para melhorar a legibilidade */
+    text-align: center;
 }
