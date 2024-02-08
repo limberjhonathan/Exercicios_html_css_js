@@ -2,12 +2,24 @@ function Compras() {
     const produto = document.querySelector("#produto");
     const quantidade = document.querySelector("#quantidade");
     const preco_uni = document.querySelector("#preco_uni");
-    const btn_off = document.querySelector(".btn_off");
     const btn_conf = document.querySelector(".btn_conf");
+    const btn_off = document.querySelector(".btn_off");
 
     this.inicio = () => {
         this.detectarMudanca();
+        this.detectarClique();
+        
     };
+
+    this.detectarClique = () => {
+        btn_conf.addEventListener("click", () => {
+            console.log("Ok")
+        });
+    }
+
+    this.adicionarProduto = () => {
+
+    }
 
     this.detectarMudanca = () => {
         produto.addEventListener("input", this.verificarCampos);
