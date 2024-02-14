@@ -75,4 +75,13 @@ body {
     background-color: #d3e2ee;
     border-radius: 15px;
     margin-left: auto;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: rgba(104, 108, 109, .5);
+}
+
+.btn:active{
+    outline: 1px solid black;
 }
