@@ -9,7 +9,7 @@ mongoose.connect(process.env.CONNECTIONSTRING)
     console.log("Conectei na base de dados")
     app.emit("pronto")
   })
-  .cacth(e => console.log(e))
+  .catch(e => console.log(e))
 
 const routes = require('./routes');
 const path = require('path');
