@@ -3,5 +3,5 @@ exports.login = (req, res) => {
 }
 
 exports.register = (req, res) => {
-    res.render('register', {title: 'Register'})
+    res.render('register', { title: 'Register'})
 }
