@@ -4,6 +4,8 @@ const path = require('path');
 const routes = require("./routes");
 const { checkPageExistence, errorHandler } = require("./src/middlewares/middlewares");
 
+app.use(express.urlencoded({ extended: true }));
+
 // Configuração dos arquivos estáticos
 app.use(express.static(path.resolve(__dirname, "public")));
 
@@ -15,6 +17,7 @@ app.set('view engine', 'ejs');
 // Rotas
 app.use(routes);
 
+//middleware
 app.use(checkPageExistence)
 app.use(errorHandler)
 
