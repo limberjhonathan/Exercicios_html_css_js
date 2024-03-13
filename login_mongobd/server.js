@@ -2,25 +2,27 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const routes = require("./routes");
+const { checkPageExistence, errorHandler, csrfMiddleware } = require("./src/middlewares/middlewares");
+const csrf = require('csurf');
 
+// Conexão com o MongoDB
 mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     app.emit('pronto');
   })
-  .catch(e => console.log(e));
+  .catch(error => console.error(error));
 
-const path = require('path');
-const routes = require("./routes");
-const { checkPageExistence, errorHandler } = require("./src/middlewares/middlewares");
-
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-
+// Middleware para análise de dados do corpo da requisição
 app.use(express.urlencoded({ extended: true }));
 
 // Configuração dos arquivos estáticos
 app.use(express.static(path.resolve(__dirname, "public")));
 
+// Configuração da sessão
 const sessionOptions = session({
   secret: 'akasdfj0út23453456+54qt23qv  qwf qwer qwer qewr asdasdasda a6()',
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
@@ -31,21 +33,25 @@ const sessionOptions = session({
     httpOnly: true
   }
 });
+app.use(sessionOptions);
 
-// Configurar o mecanismo de visualização e o diretório de visualizações
+// Configuração do mecanismo de visualização e diretório de visualizações
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+//csrf
+app.use(csrf())
 
+app.use(csrfMiddleware)
 // Rotas
 app.use(routes);
 
-//middleware
-app.use(checkPageExistence)
-app.use(errorHandler)
+// Middleware de verificação de existência de página e manipulação de erros
+app.use(checkPageExistence);
+app.use(errorHandler);
 
 // Iniciar o servidor
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

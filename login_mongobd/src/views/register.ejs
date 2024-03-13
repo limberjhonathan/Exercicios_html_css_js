@@ -1,22 +1,23 @@
 <%- include('includes/head') %>
     <div class="warpper">
-        <form action="">
+        <form action="/register/register" method="POST">
+            <input type="hidden" name="_csrf" value=<%= csrfToken%>>
             <h1>Register</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" autocomplete="off" required>
+                <input type="text" name="username" placeholder="Username" autocomplete="off" required>
                 <i class="bi bi-person-fill"></i>
             </div>
             <div class="input-box">
-            <input type="text" placeholder="Email" autocomplete="off" required class="email">
+            <input type="text" name="email" placeholder="Email" autocomplete="off" required class="email">
             <i class="bi bi-envelope-fill"></i>
             </div>
         
             <div class="input-box">
-                <input type="password" placeholder="Password" autocomplete="off" required class="password">
+                <input type="password" name="password" placeholder="Password" autocomplete="off" required class="password">
                 <i class="bi bi-lock-fill" id="password_icon"></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Repeat Password" autocomplete="off" required class="password">
+                <input type="password" name="repeatPassword" placeholder="Repeat Password" autocomplete="off" required class="password">
                 <i class="bi bi-lock-fill" id="repeat_password_icon"></i>
             </div>
 
