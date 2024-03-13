@@ -1,6 +1,6 @@
 <%- include('includes/head') %>
     <div class="warpper">
-        <form action="/register/register" method="POST">
+        <form action="/register/register" method="POST" class="registerForm">
             <input type="hidden" name="_csrf" value=<%= csrfToken%>>
             <h1>Register</h1>
             <div class="input-box">
@@ -13,12 +13,13 @@
             </div>
         
             <div class="input-box">
-                <input type="password" name="password" placeholder="Password" autocomplete="off" required class="password">
+                <input type="password" name="password" placeholder="Password" autocomplete="off" required class="password" id="password1">
                 <i class="bi bi-lock-fill" id="password_icon"></i>
             </div>
             <div class="input-box">
-                <input type="password" name="repeatPassword" placeholder="Repeat Password" autocomplete="off" required class="password">
+                <input type="password" name="repeatPassword" placeholder="Repeat Password" autocomplete="off" required class="password" id="password2">
                 <i class="bi bi-lock-fill" id="repeat_password_icon"></i>
+                <span class="span">*As senhas não se coincidem</span>
             </div>
 
             <button type="submit" class="btn">Register</button>

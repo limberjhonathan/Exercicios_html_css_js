@@ -66,6 +66,11 @@ body{
     font-size: 20px;
 }
 
+.input-box .span{
+    margin-top: 8px;
+    color: #eb6a6a;
+    display: none;
+}
 
 .warpper .btn{
     width: 100%;
@@ -79,6 +84,7 @@ body{
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    margin-top: 15px;
 }
 
 .warpper .register-link{
