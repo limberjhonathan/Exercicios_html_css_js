@@ -1,4 +1,4 @@
-const { async } = require("regenerator-runtime");
+const Login = require('../models/loginModel')
 
 exports.indexLogin = (req, res) => {
     res.render('login', { title: 'Login' });
@@ -9,7 +9,6 @@ exports.indexRegister = (req, res) => {
 }
 
 exports.register = (req, res) => {
-    console.log("passei no post")
-    res.send(req.body);
-    console.log(req.body);
+    const login = new Login(req.body)
+    login.register()
 }
