@@ -47,9 +47,16 @@ class RegisterPassword {
     inputPadlock = (event) => {
         const clickedInput = event.target;
         if (clickedInput.id === "password1") {
-            console.log("Clicou no primeiro campo de senha");
+            if(this.repeatPasswordIcon.classList.contains('bi-unlock-fill')){
+                this.repeatPasswordIcon.classList.replace('bi-unlock-fill', 'bi-lock-fill')
+                this.passwordInputs[1].setAttribute('type', 'password');
+                
+            }
         } else if (clickedInput.id === "password2") {
-            console.log("Clicou no segundo campo de senha");
+            if(this.passwordIcon.classList.contains('bi-unlock-fill')){
+                this.passwordIcon.classList.replace('bi-unlock-fill', 'bi-lock-fill')
+                this.passwordInputs[0].setAttribute('type', 'password')
+            }
         }
     }
     
