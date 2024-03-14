@@ -66,6 +66,11 @@ body{
     font-size: 20px;
 }
 
+#repeat_password_icon, #password_icon {
+    cursor: pointer;
+}
+
+
 .input-box .span{
     margin-top: 8px;
     color: #eb6a6a;
