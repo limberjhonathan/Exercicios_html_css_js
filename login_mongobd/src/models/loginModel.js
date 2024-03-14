@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const LoginSchema = new mongoose.Schema({
     nome: { type: String, required: true },
     email: { type: String, required: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
 });
 
-module.exports = mongoose.model('Login', LoginSchema);
+const LoginModel = mongoose.model('Login', LoginSchema);
 
 
 class Login {
@@ -16,8 +16,18 @@ class Login {
         this.user = null;
     }
 
-    register(){
+    async register(){
         this.valida()
+        if(this.error.length > 0) return
+        await this.userExists()
+
+    }
+
+    async userExists() {
+        this.user = await LoginModel.findOne({email: this.body.email})
+        if(this.user) this.error.push("Usuario Já existe.");
+
+        this.user = await LoginModel.create(this.body)
     }
 
     valida(){
@@ -35,7 +45,6 @@ class Login {
             nome: this.body.username,
             email: this.body.email,
             password: this.body.password,
-            repeatPassword: this.body.repeatPassword,
           }
 
           console.log(this.body)

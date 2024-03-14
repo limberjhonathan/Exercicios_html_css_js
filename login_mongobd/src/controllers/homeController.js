@@ -11,4 +11,5 @@ exports.indexRegister = (req, res) => {
 exports.register = (req, res) => {
     const login = new Login(req.body)
     login.register()
+    return res.redirect('/login')
 }
