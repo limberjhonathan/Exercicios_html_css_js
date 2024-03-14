@@ -38,9 +38,14 @@ class RegisterPassword {
 
     comparePassword = (event) => {
         if (this.passwordInputs[0].value !== this.passwordInputs[1].value){
+            this.passwordInputs[0].style.border = '2px solid red'
             this.passwordInputs[1].style.border = '2px solid red'
             this.span.style.display = 'block'
             event.preventDefault();
+        }else{
+            this.passwordInputs[0].style.border = '2px solid greenyellow';
+            this.passwordInputs[1].style.border = '2px solid greenyellow';
+            this.span.style.display = 'none'
         }
     }
 
