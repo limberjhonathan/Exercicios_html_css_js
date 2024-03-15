@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypyjs = require("bcryptjs");
 
 const LoginSchema = new mongoose.Schema({
     nome: { type: String, required: true },
@@ -16,18 +17,30 @@ class Login {
         this.user = null;
     }
 
+    async login() {
+        this.user = await LoginModel.findOne({email: this.body.email})
+
+        if(!bcrypyjs.compareSync(this.body.password, this.user.password)){
+            this.user = null
+            return
+        }
+    }
+
     async register(){
         this.valida()
         if(this.error.length > 0) return
         await this.userExists()
 
+        const salt = bcrypyjs.genSaltSync();
+        this.body.password = bcrypyjs.hashSync(this.body.password, salt)
+
+        this.user = await LoginModel.create(this.body)
     }
 
     async userExists() {
         this.user = await LoginModel.findOne({email: this.body.email})
         if(this.user) this.error.push("Usuario Já existe.");
 
-        this.user = await LoginModel.create(this.body)
     }
 
     valida(){

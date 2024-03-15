@@ -13,3 +13,13 @@ exports.register = (req, res) => {
     login.register()
     return res.redirect('/login')
 }
+
+exports.login = async (req, res) => {
+    const login = new Login(req.body)
+    await login.login()
+    if(login.user){
+        return res.send("Logado")
+    }else{
+        return res.send("usuario não logado")
+    }
+}
