@@ -6,8 +6,9 @@ const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const routes = require("./routes");
-const { checkPageExistence, errorHandler, csrfMiddleware } = require("./src/middlewares/middlewares");
+const { checkPageExistence, errorHandler, csrfMiddleware, middlewareGlobal} = require("./src/middlewares/middlewares");
 const csrf = require('csurf');
+const flash = require('connect-flash');
 
 // Conexão com o MongoDB
 mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -39,9 +40,12 @@ app.use(sessionOptions);
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+app.use(flash());
+
 //csrf
 app.use(csrf())
 
+app.use(middlewareGlobal)
 app.use(csrfMiddleware)
 // Rotas
 app.use(routes);
