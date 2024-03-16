@@ -1,6 +1,7 @@
 exports.middlewareGlobal = (req, res, next) => {
   res.locals.user = req.session.user;
   res.locals.loginError = req.session.loginError;
+  res.locals.loginInsistent = req.session.loginInsistent;
   next();
 }
 

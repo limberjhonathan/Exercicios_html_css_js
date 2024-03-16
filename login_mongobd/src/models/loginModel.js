@@ -19,6 +19,7 @@ class Login {
 
     async login() {
         this.user = await LoginModel.findOne({email: this.body.email})
+        console.log(this.user)
 
         if(!bcrypyjs.compareSync(this.body.password, this.user.password)){
             this.user = null
