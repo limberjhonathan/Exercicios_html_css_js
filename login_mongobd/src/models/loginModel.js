@@ -20,7 +20,6 @@ class Login {
     async login() {
         if(this.error.length > 0) return
         this.user = await LoginModel.findOne({email: this.body.email})
-        //console.log(this.user)
 
         if(!this.user){
             this.error.push("Usário não existe")
@@ -69,8 +68,6 @@ class Login {
             email: this.body.email,
             password: this.body.password,
           }
-
-          console.log(this.body)
     }
 
 }

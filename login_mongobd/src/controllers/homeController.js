@@ -20,14 +20,12 @@ exports.login = async (req, res) => {
         await login.login()
         if(login.error.length > 0){
             req.flash('error', login.error);
-            console.log(login.error)
             req.session.save(function(){
                 return res.redirect('/login')
             });
             return
         }
         req.session.user = login.user
-        console.log("pasei por aqui")
         req.session.save(function(){
             return res.send("logado com: " + login.user.nome)
         });
