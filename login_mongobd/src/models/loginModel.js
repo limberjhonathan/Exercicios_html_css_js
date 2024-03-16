@@ -18,13 +18,22 @@ class Login {
     }
 
     async login() {
+        if(this.error.length > 0) return
         this.user = await LoginModel.findOne({email: this.body.email})
-        console.log(this.user)
+        //console.log(this.user)
+
+        if(!this.user){
+            this.error.push("Usário não existe")
+            return
+        }
 
         if(!bcrypyjs.compareSync(this.body.password, this.user.password)){
+            this.error.push("Senha Invalida");
             this.user = null
             return
         }
+
+
     }
 
     async register(){

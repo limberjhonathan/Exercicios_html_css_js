@@ -1,8 +1,6 @@
 const Login = require('../models/loginModel')
 
 exports.indexLogin = (req, res) => {
-    req.session.loginError = null;
-    req.session.loginInsistent = false;
     res.render('login', { title: 'Login' });
 }
 
@@ -20,22 +18,21 @@ exports.login = async (req, res) => {
     try{
         const login = new Login(req.body)
         await login.login()
-        req.session.user = login.user
-        
-        if (login.user) {
-            res.send("logado")
-        } else {
-            // Define loginError na sessão
-            req.session.loginError = true;
+        if(login.error.length > 0){
+            req.flash('error', login.error);
+            console.log(login.error)
             req.session.save(function(){
-                return res.redirect('/login');
+                return res.redirect('/login')
             });
+            return
         }
-    }catch(e){
-        req.session.loginInsistent = true;
+        req.session.user = login.user
+        console.log("pasei por aqui")
         req.session.save(function(){
-            return res.redirect("/login")
-        })
-        // res.send("Credenciais inválidas")
+            return res.send("logado com: " + login.user.nome)
+        });
+    }catch(e){
+        console.log("deu erro")
+        return res.render('404')
     }
 }
